@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rede em Mãos — Guia de Saúde Mental para Familiares</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d2137;
+    --teal: #1a7f6e;
+    --teal-light: #e6f5f2;
+    --teal-mid: #2aa899;
+    --warm: #f5f0e8;
+    --text: #1a1a1a;
+    --text-muted: #5a5a5a;
+    --border: rgba(26,127,110,0.18);
+    --white: #ffffff;
+    --accent: #e8614d;
+    --yellow: #f5a623;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm);
+    color: var(--text);
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(42,168,153,0.12);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(42,168,153,0.08);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(42,168,153,0.2);
+    color: #7ee8dc;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(42,168,153,0.3);
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: #7ee8dc;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+    margin: 1.2rem auto 0;
+    font-weight: 300;
+  }
+
+  .hero-line {
+    width: 48px;
+    height: 2px;
+    background: var(--teal-mid);
+    margin: 2rem auto 0;
+    border-radius: 2px;
+  }
+
+  /* INTRO CARD */
+  .intro-wrap {
+    max-width: 720px;
+    margin: -2rem auto 0;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 10;
+  }
+
+  .intro-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    border-left: 4px solid var(--teal-mid);
+    box-shadow: 0 4px 32px rgba(13,33,55,0.10);
+  }
+
+  .intro-card p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+  }
+
+  /* MAIN */
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* SECTION HEADERS */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    margin-top: 3.5rem;
+  }
+
+  .section-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .section-label h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--navy);
+  }
+
+  /* CAPS EXPLAINER */
+  .explainer-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 1.75rem 2rem;
+    border: 1px solid var(--border);
+  }
+
+  .explainer-card p {
+    color: var(--text-muted);
+    font-size: 0.97rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .how-to {
+    background: var(--teal-light);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .how-to strong {
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 0.35rem;
+  }
+
+  .how-to p {
+    color: var(--teal);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+
+  .caps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+  }
+
+  .caps-pill {
+    background: var(--navy);
+    color: rgba(255,255,255,0.9);
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  .caps-pill strong {
+    display: block;
+    font-size: 0.9rem;
+    color: #7ee8dc;
+    margin-bottom: 0.15rem;
+  }
+
+  .caps-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+    color: var(--teal);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(26,127,110,0.3);
+    padding-bottom: 1px;
+  }
+
+  .caps-link:hover { color: var(--teal-mid); }
+
+  /* CRISIS TABLE */
+  .crisis-table-wrap {
+    background: var(--white);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.85rem 1.25rem;
+    text-align: left;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+
+  tbody td {
+    padding: 0.9rem 1.25rem;
+    font-size: 0.93rem;
+    color: var(--text-muted);
+    vertical-align: middle;
+  }
+
+  tbody td:first-child {
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .crisis-num {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: -0.02em;
+  }
+
+  .badge-24 {
+    display: inline-block;
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+
+  /* GROUPS */
+  .group-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .group-item {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .group-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    background: var(--teal-light);
+    color: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+  }
+
+  .group-item h3 {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .group-item p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* SUS STEPS */
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .step-dot {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--teal-mid);
+    color: var(--white);
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1;
+  }
+
+  .step-line {
+    width: 2px;
+    flex: 1;
+    min-height: 24px;
+    background: rgba(42,168,153,0.2);
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .step-item:last-child .step-line { display: none; }
+
+  .step-content {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    margin-bottom: 0.75rem;
+    flex: 1;
+  }
+
+  .step-content p {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .crisis-note {
+    background: #fff5f4;
+    border: 1px solid rgba(232,97,77,0.2);
+    border-radius: 10px;
+    padding: 0.85rem 1.1rem;
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    color: #b03422;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  /* GLOSSARY */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .glossary-item {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+  }
+
+  .glossary-item dt {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--teal);
+    margin-bottom: 0.3rem;
+  }
+
+  .glossary-item dd {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* ODS */
+  .ods-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .ods-card {
+    border-radius: 12px;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .ods-card.ods3 { background: #e8f5e0; border: 1px solid rgba(76,175,80,0.2); }
+  .ods-card.ods10 { background: #fef0e0; border: 1px solid rgba(245,166,35,0.2); }
+  .ods-card.ods11 { background: #e0f0fe; border: 1px solid rgba(33,150,243,0.2); }
+
+  .ods-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .ods3 .ods-num { color: #2e7d32; }
+  .ods10 .ods-num { color: #e65100; }
+  .ods11 .ods-num { color: #1565c0; }
+
+  .ods-title {
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.5rem;
+  }
+
+  .ods3 .ods-title { color: #388e3c; }
+  .ods10 .ods-title { color: #f57c00; }
+  .ods11 .ods-title { color: #1976d2; }
+
+  .ods-desc { font-size: 0.82rem; color: var(--text-muted); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    font-size: 0.82rem;
+    line-height: 1.8;
+  }
+
+  footer strong { color: rgba(255,255,255,0.85); }
+
+  @media (max-width: 600px) {
+    .intro-card { padding: 1.5rem; }
+    .hero { padding: 4rem 1.5rem 3rem; }
+    thead th, tbody td { padding: 0.75rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-badge">Instituto de Psiquiatria — IPq/HC · São Paulo</div>
+  <h1>Rede em <em>Mãos</em></h1>
+  <p class="hero-sub">Guia de recursos de saúde mental para familiares de pacientes em tratamento</p>
+  <div class="hero-line"></div>
+</header>
+
+<div class="intro-wrap">
+  <div class="intro-card">
+    <p>"Este guia foi criado para ajudar familiares a conhecer os serviços e apoios disponíveis na cidade de São Paulo. Você não precisa enfrentar isso sozinho."</p>
+  </div>
+</div>
+
+<main>
+
+  <!-- SEÇÃO 1 — CAPS -->
+  <div class="section-label">
+    <div class="section-num">1</div>
+    <h2>O que é o CAPS?</h2>
+  </div>
+
+  <div class="explainer-card">
+    <p>O <strong>Centro de Atenção Psicossocial (CAPS)</strong> é um serviço público e <strong>gratuito</strong> do SUS voltado para pessoas com transtornos mentais. Oferece acompanhamento, medicação, grupos terapêuticos e suporte social — sem precisar de internação.</p>
+
+    <div class="how-to">
+      <strong>Como acessar</strong>
+      <p>Procure a UBS (posto de saúde) mais próxima da sua casa e peça encaminhamento para o CAPS da sua região.</p>
+    </div>
+
+    <div class="caps-grid">
+      <div class="caps-pill"><strong>CAPS I</strong>Cidades de menor porte</div>
+      <div class="caps-pill"><strong>CAPS II</strong>Transtornos mentais em geral</div>
+      <div class="caps-pill"><strong>CAPS III</strong>Atendimento 24 horas</div>
+      <div class="caps-pill"><strong>CAPSad</strong>Álcool e outras drogas</div>
+      <div class="caps-pill"><strong>CAPSi</strong>Infância e adolescência</div>
+    </div>
+
+    <a class="caps-link" href="https://cnes.datasus.gov.br" target="_blank">
+      ↗ Encontre o CAPS mais próximo (CNES/DATASUS)
+    </a>
+  </div>
+
+  <!-- SEÇÃO 2 — LINHAS DE CRISE -->
+  <div class="section-label">
+    <div class="section-num">2</div>
+    <h2>Linhas de apoio e crise</h2>
+  </div>
+
+  <div class="crisis-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Serviço</th>
+          <th>Contato</th>
+          <th>Horário</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CVV — Centro de Valorização da Vida</td>
+          <td><span class="crisis-num">188</span></td>
+          <td>24h <span class="badge-24">todos os dias</span></td>
+        </tr>
+        <tr>
+          <td>SAMU — Emergências</td>
+          <td><span class="crisis-num">192</span></td>
+          <td>24h <span class="badge-24">todos os dias</span></td>
+        </tr>
+        <tr>
+          <td>Disque Saúde</td>
+          <td><span class="crisis-num">136</span></td>
+          <td>24h <span class="badge-24">todos os dias</span></td>
+        </tr>
+        <tr>
+          <td>IPq-HC — Ambulatório</td>
+          <td>(11) 2661-6984</td>
+          <td>Horário comercial</td>
+        </tr>
+        <tr>
+          <td>Prefeitura SP — Saúde Mental</td>
+          <td><span class="crisis-num">156</span></td>
+          <td>Horário comercial</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SEÇÃO 3 — GRUPOS DE APOIO -->
+  <div class="section-label">
+    <div class="section-num">3</div>
+    <h2>Grupos de apoio para familiares</h2>
+  </div>
+
+  <div class="group-list">
+    <div class="group-item">
+      <div class="group-icon">A</div>
+      <div>
+        <h3>AMAFE</h3>
+        <p>Associação de Amigos, Familiares e Portadores de Esquizofrenia — vinculada ao IPq/HC. Grupos de apoio e orientação para familiares de pacientes psiquiátricos.</p>
+      </div>
+    </div>
+    <div class="group-item">
+      <div class="group-icon">A</div>
+      <div>
+        <h3>ASFAV</h3>
+        <p>Associação de Familiares e Amigos de Vítimas de Violência e Saúde Mental. Suporte emocional e orientação jurídica para famílias em situação de vulnerabilidade.</p>
+      </div>
+    </div>
+    <div class="group-item">
+      <div class="group-icon">A</div>
+      <div>
+        <h3>Al-Anon</h3>
+        <p>Grupos de apoio para familiares e amigos de pessoas com dependência de álcool. Reuniões gratuitas em diversas regiões de São Paulo.</p>
+      </div>
+    </div>
+    <div class="group-item">
+      <div class="group-icon">C</div>
+      <div>
+        <h3>Grupos nos CAPS</h3>
+        <p>Cada CAPS oferece grupos de suporte a familiares. Consulte o CAPS da sua região para saber dias e horários disponíveis.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 4 — ACESSAR O SUS -->
+  <div class="section-label">
+    <div class="section-num">4</div>
+    <h2>Como acessar o SUS para saúde mental</h2>
+  </div>
+
+  <div class="steps-list">
+    <div class="step-item">
+      <div class="step-left">
+        <div class="step-dot">1</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <p>Vá até a <strong>UBS (Unidade Básica de Saúde)</strong> mais próxima da sua casa — o posto de saúde do seu bairro é a porta de entrada do SUS.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-left">
+        <div class="step-dot">2</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <p>Relate a situação e peça <strong>avaliação de saúde mental</strong>. Seja claro sobre os sintomas e a frequência com que aparecem.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-left">
+        <div class="step-dot">3</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <p>Se necessário, a UBS fará o <strong>encaminhamento para o CAPS</strong> ou para um ambulatório especializado de referência.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-left">
+        <div class="step-dot">4</div>
+        <div class="step-line"></div>
+      </div>
+      <div class="step-content">
+        <p>Em casos de <strong>crise aguda</strong>, dirija-se ao Pronto-Socorro mais próximo ou ligue imediatamente para o SAMU.</p>
+        <div class="crisis-note">⚠ Crise aguda: ligue 192 (SAMU) ou vá ao Pronto-Socorro.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEÇÃO 5 — GLOSSÁRIO -->
+  <div class="section-label">
+    <div class="section-num">5</div>
+    <h2>Glossário básico</h2>
+  </div>
+
+  <dl class="glossary-grid">
+    <div class="glossary-item">
+      <dt>CAPS</dt>
+      <dd>Centro de Atenção Psicossocial. Serviço público e gratuito de saúde mental do SUS.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>UBS</dt>
+      <dd>Unidade Básica de Saúde. O posto de saúde do bairro — porta de entrada do SUS.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Internação voluntária</dt>
+      <dd>Quando o próprio paciente concorda com a internação hospitalar.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Internação involuntária</dt>
+      <dd>Quando um familiar ou médico solicita a internação sem o consentimento do paciente, por risco à sua segurança.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Alta progressiva</dt>
+      <dd>Saída gradual da internação com acompanhamento ambulatorial contínuo.</dd>
+    </div>
+    <div class="glossary-item">
+      <dt>Psicofármaco</dt>
+      <dd>Medicamento utilizado no tratamento de transtornos mentais, prescrito por médico psiquiatra.</dd>
+    </div>
+  </dl>
+
+  <!-- ODS -->
+  <div class="section-label" style="margin-top: 3.5rem;">
+    <div class="section-num" style="background: var(--accent);">♻</div>
+    <h2>Objetivos de Desenvolvimento Sustentável</h2>
+  </div>
+
+  <div class="ods-row">
+    <div class="ods-card ods3">
+      <div class="ods-num">3</div>
+      <div class="ods-title">Saúde e Bem-Estar</div>
+      <div class="ods-desc">Facilitar o acesso à rede de saúde mental e melhorar a continuidade do cuidado.</div>
+    </div>
+    <div class="ods-card ods10">
+      <div class="ods-num">10</div>
+      <div class="ods-title">Redução das Desigualdades</div>
+      <div class="ods-desc">Democratizar informações para famílias vulneráveis que dependem do SUS.</div>
+    </div>
+    <div class="ods-card ods11">
+      <div class="ods-num">11</div>
+      <div class="ods-title">Cidades Sustentáveis</div>
+      <div class="ods-desc">Fortalecer a rede de serviços no território urbano de São Paulo.</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <strong>Rede em Mãos</strong><br>
+  Projeto de Extensão — Impacto Social e Estratégias para o Desenvolvimento de Territórios<br>
+  Instituto de Psiquiatria do Hospital das Clínicas — IPq/HC · São Paulo, 2026<br><br>
+  <span>Este guia tem caráter informativo e não substitui orientação médica ou psicológica profissional.</span>
+</footer>
+
+</body>
+</html>
